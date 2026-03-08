@@ -132,7 +132,6 @@ export default function HackerCursor() {
                     transform: `rotate(${isClicking ? '45deg' : '0deg'})`,
                 }}
             >
-                {/* Crosshair SVG */}
                 <svg
                     width={cursorSize}
                     height={cursorSize}
@@ -141,17 +140,15 @@ export default function HackerCursor() {
                     xmlns="http://www.w3.org/2000/svg"
                     style={{ filter: 'drop-shadow(0 0 6px rgba(0, 255, 65, 0.6))' }}
                 >
-                    {/* Corner brackets */}
-                    <path d="M2 10 L2 2 L10 2" stroke="#00FF41" strokeWidth="1.5" strokeLinecap="square" />
-                    <path d="M26 2 L34 2 L34 10" stroke="#00FF41" strokeWidth="1.5" strokeLinecap="square" />
-                    <path d="M34 26 L34 34 L26 34" stroke="#00FF41" strokeWidth="1.5" strokeLinecap="square" />
-                    <path d="M10 34 L2 34 L2 26" stroke="#00FF41" strokeWidth="1.5" strokeLinecap="square" />
+                    {/* Tech Ring */}
+                    <circle cx="18" cy="18" r="14" stroke="#00FF41" strokeWidth="1" strokeDasharray="4 6" opacity="0.8" className={isClicking ? '' : 'animate-[spin_4s_linear_infinite]'} style={{ transformOrigin: 'center' }} />
+                    <circle cx="18" cy="18" r="10" stroke="#00FF41" strokeWidth="0.5" opacity="0.4" />
 
-                    {/* Cross lines */}
-                    <line x1="18" y1="6" x2="18" y2="13" stroke="#00FF41" strokeWidth="0.8" opacity="0.6" />
-                    <line x1="18" y1="23" x2="18" y2="30" stroke="#00FF41" strokeWidth="0.8" opacity="0.6" />
-                    <line x1="6" y1="18" x2="13" y2="18" stroke="#00FF41" strokeWidth="0.8" opacity="0.6" />
-                    <line x1="23" y1="18" x2="30" y2="18" stroke="#00FF41" strokeWidth="0.8" opacity="0.6" />
+                    {/* Directional ticks */}
+                    <line x1="18" y1="2" x2="18" y2="6" stroke="#00FF41" strokeWidth="1.5" />
+                    <line x1="18" y1="30" x2="18" y2="34" stroke="#00FF41" strokeWidth="1.5" />
+                    <line x1="2" y1="18" x2="6" y2="18" stroke="#00FF41" strokeWidth="1.5" />
+                    <line x1="30" y1="18" x2="34" y2="18" stroke="#00FF41" strokeWidth="1.5" />
                 </svg>
             </div>
 
