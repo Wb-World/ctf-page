@@ -15,7 +15,7 @@ export default function Terminal() {
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
     const [logs, setLogs] = useState<LogEntry[]>([
-        { text: 'CYBERJAI.OPS // SYSTEM CONSOLE V4.2_STABLE', type: 'info', timestamp: new Date().toLocaleTimeString() },
+        { text: 'CTF CHALLENGES // SYSTEM CONSOLE V4.2_STABLE', type: 'info', timestamp: new Date().toLocaleTimeString() },
         { text: 'LINK ESTABLISHED VIA SINGAPORE_EDGE_NODE_01', type: 'info', timestamp: new Date().toLocaleTimeString() },
         { text: 'TYPE "HELP" FOR COMMAND LIST.', type: 'info', timestamp: new Date().toLocaleTimeString() },
     ]);
