@@ -42,10 +42,10 @@ export default function Navbar() {
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xl font-bold tracking-tight text-white leading-tight">
-                            CYBER<span className="text-hacker-green">JAI</span>
+                            CTF <span className="text-hacker-green">Challenges</span>
                         </span>
                         <span className="text-[11px] text-white/70 font-medium">
-                            Ethical Ops
+                            Academic Portal
                         </span>
                     </div>
                 </div>

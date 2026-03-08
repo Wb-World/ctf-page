@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            placeholder="e.g. jaiganesh"
+                            placeholder="Admin Node Address"
                             className="bg-black/80 border border-red-500/20 rounded p-3 text-red-100 focus:border-red-500 focus:shadow-[0_0_15px_rgba(248,113,113,0.3)] outline-none font-mono text-sm transition-all"
                             required
                         />
