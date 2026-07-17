@@ -139,12 +139,35 @@ export default function ChallengesPage() {
     };
 
     const getDifficultyColor = (diff: string) => {
-        switch (diff?.toLowerCase()) {
-            case 'easy': return 'text-[#00ff66]';
-            case 'medium': return 'text-yellow-400';
-            case 'hard': return 'text-orange-500';
-            case 'extreme': return 'text-red-500';
+        switch (diff?.toUpperCase()) {
+            case 'BEGINNER': return 'text-[#0088FF]';
+            case 'EASY': return 'text-[#00ff66]';
+            case 'MEDIUM': return 'text-yellow-400';
+            case 'HARD': return 'text-orange-500';
+            case 'INSANE': return 'text-purple-400';
             default: return 'text-gray-400';
+        }
+    };
+
+    const getDifficultyBadgeStyle = (diff: string) => {
+        switch (diff?.toUpperCase()) {
+            case 'BEGINNER': return 'border-[#0088FF]/40 text-[#0088FF] bg-[#0088FF]/10';
+            case 'EASY': return 'border-[#00ff66]/40 text-[#00ff66] bg-[#00ff66]/10';
+            case 'MEDIUM': return 'border-yellow-400/40 text-yellow-400 bg-yellow-400/10';
+            case 'HARD': return 'border-orange-500/40 text-orange-500 bg-orange-500/10';
+            case 'INSANE': return 'border-purple-500/40 text-purple-400 bg-purple-600/10';
+            default: return 'border-white/10 text-gray-400';
+        }
+    };
+
+    const getEstTime = (diff: string) => {
+        switch (diff?.toUpperCase()) {
+            case 'BEGINNER': return '15–30 min';
+            case 'EASY': return '1–2 hrs';
+            case 'MEDIUM': return '2–5 hrs';
+            case 'HARD': return '5–12 hrs';
+            case 'INSANE': return '12+ hrs';
+            default: return 'Unknown';
         }
     };
 
@@ -294,7 +317,7 @@ export default function ChallengesPage() {
                                     <h2 className="text-2xl md:text-3xl font-bold text-white capitalize">{selectedTool.title}</h2>
 
                                     <div className="flex gap-4 mt-2">
-                                        <span className={`text-xs font-mono px-2 py-1 rounded bg-black/50 border border-white/10 ${getDifficultyColor(selectedTool.difficulty)}`}>{selectedTool.difficulty} Grade</span>
+                                        <span className={`text-xs font-mono px-2 py-1 rounded border ${getDifficultyBadgeStyle(selectedTool.difficulty)}`}>{selectedTool.difficulty}</span>
                                         <span className="text-xs font-mono text-hacker-green px-2 py-1 rounded bg-hacker-green/10 border border-hacker-green/20">{selectedTool.score} Points</span>
                                     </div>
                                 </div>
@@ -304,10 +327,39 @@ export default function ChallengesPage() {
                             </div>
 
                             <div className="p-6 md:p-8 flex flex-col gap-8">
-                                <div className="flex flex-col gap-4">
-                                    <p className="text-base text-[#cbd5e1] leading-relaxed">
-                                        This module evaluates your proficiency in exploiting advanced vulnerabilities within the specified architecture space. Retrieve the protected payload and submit the decryption hash below.
-                                    </p>
+                                {/* Story */}
+                                {selectedTool.story && (
+                                    <div className="flex flex-col gap-2">
+                                        <span className="text-[10px] font-mono text-hacker-green uppercase tracking-widest">INTEL_STORY</span>
+                                        <p className="italic text-[#cbd5e1] border-l-2 border-hacker-green/60 pl-4 py-1 text-sm leading-relaxed opacity-90">
+                                            &ldquo;{selectedTool.story}&rdquo;
+                                        </p>
+                                    </div>
+                                )}
+
+                                {/* Description / Objective */}
+                                <div className="flex flex-col gap-2">
+                                    <span className="text-[10px] font-mono text-hacker-green uppercase tracking-widest">OBJECTIVE</span>
+                                    <div className="text-sm font-mono text-[#a0aec0] leading-relaxed whitespace-pre-wrap bg-black/30 border border-white/5 p-4 rounded">
+                                        {selectedTool.description || 'No objective data available.'}
+                                    </div>
+                                </div>
+
+                                {/* Tags */}
+                                {selectedTool.tags && selectedTool.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-2">
+                                        {selectedTool.tags.map((tag: string) => (
+                                            <span key={tag} className="text-[9px] font-mono px-2 py-0.5 border border-white/10 bg-white/5 text-[#7E8D86] uppercase tracking-wider rounded">
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {/* Estimated time */}
+                                <div className="flex items-center gap-2 text-xs font-mono text-[#7E8D86]">
+                                    <span className="uppercase tracking-widest">EST. TIME:</span>
+                                    <span className={getDifficultyColor(selectedTool.difficulty)}>{getEstTime(selectedTool.difficulty)}</span>
                                 </div>
 
                                 <div className="flex flex-wrap gap-4">
